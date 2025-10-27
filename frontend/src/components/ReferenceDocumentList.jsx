@@ -152,7 +152,7 @@ export default function ReferenceDocumentList({ category, refDocs, onClone }) {
                           {step.documents.map((file, i) => (
                             <li key={i}>
                               <a
-                                href={`http://localhost:5050/uploads/${file}`}
+                                href={`https://docuvault-agmi.onrender.com/uploads/${file}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
