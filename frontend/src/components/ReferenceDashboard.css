@@ -1,0 +1,153 @@
+/* ReferenceDashboard.css */
+
+.reference-dashboard {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.reference-dashboard h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.selector-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.selector-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #34495e;
+}
+
+.selector-group select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 250px;
+  font-size: 14px;
+}
+
+.document-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  background-color: #fefefe;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.document-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.card-header button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card-header button:hover {
+  background-color: #c0392b;
+}
+
+.fields-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.fields-container label {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: #ecf0f1;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fields-container label:hover {
+  background-color: #d0d7de;
+}
+
+.fields-container input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: #3498db;
+}
+
+.save-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 15px;
+}
+
+.save-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Category Card for all saved reference documents */
+.single-category-card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.single-category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+}
+
+.single-category-card h4 {
+  margin-bottom: 12px;
+  color: #34495e;
+}
+
+.single-category-card p {
+  margin: 4px 0;
+  color: #2c3e50;
+}
+
+.single-category-card ul {
+  padding-left: 18px;
+}
+
+.single-category-card li {
+  list-style: disc;
+  margin-bottom: 4px;
+}

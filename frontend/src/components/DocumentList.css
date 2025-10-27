@@ -1,0 +1,94 @@
+.document-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.no-docs {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  grid-column: 1/-1;
+}
+
+.document-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.doc-type {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.doc-category {
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.doc-fields {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.field-row:last-child {
+  border-bottom: none;
+}
+
+.field-key {
+  font-weight: 500;
+  color: #555;
+}
+
+.field-label {
+  color: #111;
+}
+
+.btn.delete-btn {
+  align-self: flex-end;
+  background: #ff5f5f;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn.delete-btn:hover {
+  background: #e63939;
+}

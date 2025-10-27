@@ -1,0 +1,214 @@
+/* ===== Global Styles ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ===== App Container ===== */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== App Title ===== */
+.app-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+}
+
+/* ===== Navigation ===== */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.nav-bar a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-bar a:hover {
+  background-color: #4f46e5;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+}
+
+/* ===== Document Form ===== */
+.document-form {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+  outline: none;
+}
+
+.custom-field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.custom-field-row .field-key {
+  font-weight: 500;
+  color: #555;
+  min-width: 70px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn.add-btn {
+  background-color: #4f46e5;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.btn.add-btn:hover {
+  background-color: #3b36c0;
+}
+
+.btn.save-btn {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.btn.save-btn:hover {
+  background-color: #0e7a34;
+}
+
+.btn.delete-btn {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.btn.delete-btn:hover {
+  background-color: #c91f1f;
+}
+
+/* ===== Document List ===== */
+.document-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.document-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.doc-type {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.doc-category {
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.doc-fields {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.field-row:last-child {
+  border-bottom: none;
+}
+
+.field-key {
+  font-weight: 500;
+  color: #555;
+}
+
+.field-label {
+  color: #111;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

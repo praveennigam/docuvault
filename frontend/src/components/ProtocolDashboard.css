@@ -1,0 +1,272 @@
+/* 🌟 Container */
+.protocol-dashboard {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f7f9fc, #e9f0ff);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ✨ Headings */
+.protocol-dashboard h2 {
+  text-align: center;
+  color: #1e3a8a;
+  font-size: 28px;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.protocol-dashboard h3 {
+  margin-top: 50px;
+  color: #2d3748;
+  font-size: 22px;
+}
+
+/* 📝 Form */
+.protocol-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 35px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Input fields */
+.protocol-form input[type="text"],
+.protocol-form textarea {
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+/* ✏️ Scrollable textarea */
+.protocol-form textarea {
+  height: 140px;
+  resize: none;
+  overflow-y: auto;
+  width: 96%;
+}
+
+.protocol-form input[type="text"]:focus,
+.protocol-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* 📂 File input */
+.protocol-form input[type="file"] {
+  border: 2px dashed #a0aec0;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.protocol-form input[type="file"]:hover {
+  border-color: #3b82f6;
+  background-color: #f0f7ff;
+}
+
+/* 🗂 File lists */
+.protocol-form ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.protocol-form ul li {
+  background-color: #e2e8f0;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.protocol-form ul li:hover {
+  background-color: #dbeafe;
+}
+
+.protocol-form ul li a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.protocol-form ul li a:hover {
+  text-decoration: underline;
+}
+
+/* 🎯 Buttons */
+.protocol-form button,
+.protocol-card button {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.protocol-form button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 500;
+}
+
+.protocol-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.protocol-form button + button {
+  background-color: #6c757d;
+}
+
+.protocol-form button + button:hover {
+  background-color: #495057;
+}
+
+/* 📘 Protocol cards */
+.protocol-card {
+  background-color: #ffffff;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.protocol-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.protocol-card h4 {
+  margin: 0 0 10px;
+  color: #1f2937;
+  font-size: 20px;
+}
+
+.protocol-card p {
+  margin: 6px 0;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* File links inside cards */
+.protocol-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.protocol-card ul li {
+  display: inline-block;
+  margin-right: 8px;
+  background-color: #eef2ff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.protocol-card ul li a {
+  text-decoration: none;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.protocol-card ul li a:hover {
+  text-decoration: underline;
+}
+
+/* 🧩 Edit/Delete Buttons */
+.protocol-card button {
+  margin-right: 10px;
+  margin-top: 12px;
+  background-color: #10b981;
+  color: #fff;
+}
+
+.protocol-card button:hover {
+  background-color: #059669;
+  transform: scale(1.05);
+}
+
+.protocol-card button + button {
+  background-color: #ef4444;
+}
+
+.protocol-card button + button:hover {
+  background-color: #dc2626;
+}
+
+/* 📄 Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.pagination button:hover {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.pagination button:disabled {
+  background-color: #f1f5f9;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .protocol-dashboard {
+    padding: 15px;
+  }
+
+  .protocol-form {
+    padding: 18px;
+  }
+
+  .protocol-form input[type="text"],
+  .protocol-form textarea {
+    font-size: 15px;
+  }
+
+  .protocol-card {
+    padding: 18px;
+  }
+
+  .protocol-card h4 {
+    font-size: 18px;
+  }
+
+  .protocol-form button,
+  .protocol-card button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
