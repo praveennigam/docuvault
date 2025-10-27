@@ -8,19 +8,19 @@ export default function UserAccess() {
   const [page, setPage] = useState("dashboard");
   const navigate = useNavigate();
 
-  const handleLoginSuccess = () => {
+  // ✅ Called when login is successful
+  const handleLoginSuccess = (user) => {
+    console.log("Logged in as:", user);
     localStorage.setItem("isLoggedIn", "true");
-    navigate("/user-dashboard"); // ✅ redirects to actual dashboard page
+    navigate("/user-dashboard"); // ✅ redirect to dashboard
   };
 
   return (
     <div className="user-access-container">
-      {/* 🌈 Dashboard (Welcome Screen) */}
       {page === "dashboard" && (
         <div className="welcome-box fade-in">
           <h1 className="app-title">Welcome to User Portal</h1>
           <p className="subtitle">Access your account or join the portal</p>
-
           <div className="button-group">
             <button className="btn login-btn" onClick={() => setPage("login")}>
               Login
@@ -35,12 +35,13 @@ export default function UserAccess() {
         </div>
       )}
 
-      {/* 🔑 Login Page */}
       {page === "login" && (
-        <LoginPage onBack={() => setPage("dashboard")} onSuccess={handleLoginSuccess} />
+        <LoginPage
+          onBack={() => setPage("dashboard")}
+          onLoginSuccess={handleLoginSuccess} // ✅ pass handler
+        />
       )}
 
-      {/* 📝 Register Page */}
       {page === "register" && (
         <RegisterPage onBack={() => setPage("dashboard")} />
       )}

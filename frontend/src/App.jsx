@@ -8,6 +8,7 @@ import ProtocolDashboard from "./components/ProtocolDashboard";
 import UserAccess from "./pages/UserAccess"; // ✅ Import added
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import UserDashboard from "./pages/UserDashboard"; 
 
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
           <Route path="/protocols" element={<ProtocolDashboard />} />
           <Route path="/dashboard" element={<UserAccess />} />
           <Route path="/user-dashboard" element={<Dashboard />} />
-
+           <Route path="/user-dashboard" element={<UserDashboard />} />
            {/* ✅ Added route */}
         </Routes>
       </div>

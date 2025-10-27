@@ -1,8 +1,4 @@
 /* 🌈 MAIN APP CONTAINER */
-* {
-  margin: 0;
-  padding: 0;
-}
 
 .app-container {
   background: linear-gradient(135deg, #1e1f29, #2b2d42, #1f2135, #2c2f47);

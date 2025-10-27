@@ -7,6 +7,10 @@ import referenceRoutes from "./routes/referenceDocumentRoutes.js"
 import protocolRoutes from "./routes/protocolRoutes.js";
 import fileRoutes from "./routes/fileRoutes.js";
 import path from "path";
+import userRoutes from "./routes/userRoutes.js";
+
+import bcrypt from "bcryptjs";
+
 
 dotenv.config();
 
@@ -46,6 +50,9 @@ app.use("/api/documents", documentRoutes);
 // ReferenceDocument routes
 app.use("/api/reference-documents", referenceRoutes);
 
+
+//user
+app.use("/api/users", userRoutes);
 
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
