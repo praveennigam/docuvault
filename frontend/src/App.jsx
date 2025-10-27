@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import DocumentForm from "./components/DocumentForm";
 import DocumentList from "./components/DocumentList";
 import ReferenceDashboard from "./components/ReferenceDashboard";
-import ProtocolDashboard from "./components/ProtocolDashboard"; // ✅ NEW
+import ProtocolDashboard from "./components/ProtocolDashboard";
+import UserAccess from "./pages/UserAccess"; // ✅ Import added
 import "./App.css";
+import Dashboard from "./pages/Dashboard";
+
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -26,11 +29,11 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <h1 className="app-title">📄 Document Dashboard</h1>
         <nav className="nav-bar">
           <Link to="/">Documents</Link>
-          <Link to="/reference">Reference Documents</Link>
-          <Link to="/protocols">Protocols</Link> {/* ✅ New */}
+          <Link to="/reference">Sop</Link>
+          <Link to="/protocols">Protocols</Link>
+          <Link to="/dashboard">Dashboard</Link> {/* ✅ Added Dashboard link */}
         </nav>
 
         <Routes>
@@ -44,7 +47,11 @@ function App() {
             }
           />
           <Route path="/reference" element={<ReferenceDashboard />} />
-          <Route path="/protocols" element={<ProtocolDashboard />} /> {/* ✅ New */}
+          <Route path="/protocols" element={<ProtocolDashboard />} />
+          <Route path="/dashboard" element={<UserAccess />} />
+          <Route path="/user-dashboard" element={<Dashboard />} />
+
+           {/* ✅ Added route */}
         </Routes>
       </div>
     </Router>

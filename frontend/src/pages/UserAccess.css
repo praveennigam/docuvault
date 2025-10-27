@@ -1,0 +1,130 @@
+/* 🌍 Full Page Setup */
+.user-access-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e1f29, #2b2d42, #6a5acd);
+  background-size: 200% 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: gradientShift 6s ease infinite;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+/* 🌈 Animated Gradient */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 🧊 Welcome Box */
+.welcome-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  transform: perspective(800px) rotateY(0deg);
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.welcome-box:hover {
+  transform: perspective(800px) rotateY(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ✨ Text Styles */
+.app-title {
+  color: #ffffff;
+  font-size: 0.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #6a5acd, 0 0 20px #8a2be2;
+}
+
+.subtitle {
+  color: #d6d6ff;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* 🎮 Buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 22px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background: linear-gradient(90deg, #4f46e5, #6a5acd);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.5);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.7);
+}
+
+.register-btn {
+  background: linear-gradient(90deg, #06b6d4, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.7);
+}
+
+/* 🔄 Animation Effects */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.slide-in {
+  animation: slideIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -25,7 +25,7 @@ export default function DocumentList({ documents, onDelete }) {
           <ul className="doc-fields">
             {(doc.fields || []).map((f) => (
               <li key={f.key} className="field-row">
-                <span className="field-key">{f.key}</span>
+               
                 <span className="field-label">{f.label}</span>
               </li>
             ))}
