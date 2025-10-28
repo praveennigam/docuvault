@@ -17,6 +17,7 @@
   font-family: "Poppins", sans-serif;
   transition: all 0.4s ease;
   animation: fadeIn 0.8s ease-in-out;
+  padding-bottom: 70px;
 }
 
 /* 🎞️ FADE-IN EFFECT */

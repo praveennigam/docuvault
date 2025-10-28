@@ -1,25 +1,27 @@
-
-
-/* 🌈 Main Form Container */
+/* 🌈 MAIN CONTAINER */
 .reference-form {
-  background: linear-gradient(135deg, #1e1f29, #2b2d42);
+  background: linear-gradient(145deg, #1e1f29, #2b2d42, #3a0ca3);
   color: #f8f9fa;
-  border-radius: 16px;
-  padding: 25px;
+  border-radius: 18px;
+  padding: 20px;
   width: 90%;
   max-width: 900px;
-  margin: 30px auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  margin: 20px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
+  overflow-y: auto;
+  max-height: 85vh;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 🔘 Section Styling */
+/* 🔘 SELECTOR GROUP */
 .selector-group {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
 }
 
@@ -31,40 +33,45 @@
 
 .selector-group select,
 .selector-group input {
+  flex: 1;
+  min-width: 180px;
   background: #2e3047;
   border: 1px solid #444;
   border-radius: 10px;
   color: #fff;
-  padding: 10px 15px;
+  padding: 9px 14px;
   font-size: 15px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .selector-group select:hover,
 .selector-group input:focus {
   border-color: #8a9eff;
-  box-shadow: 0 0 8px #8a9eff66;
+  box-shadow: 0 0 10px #8a9eff80;
 }
 
-/* 📄 Document Card */
+/* 📄 DOCUMENTS WRAPPER */
 .documents-wrapper {
-  margin-top: 25px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
 }
 
+/* 📘 DOCUMENT CARD */
 .document-card {
   background: linear-gradient(145deg, #2b2d42, #1f2135);
   border-radius: 14px;
-  padding: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+  padding: 12px 15px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .document-card.open {
   transform: scale(1.02);
   border: 1px solid #6366f1;
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.35);
 }
 
 .document-header {
@@ -72,53 +79,59 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .document-header h4 {
   margin: 0;
   color: #d2d6ff;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .preview {
   color: #aaa;
   font-size: 14px;
-  margin-right: auto;
-  margin-left: 20px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* ❌ Remove Button */
+/* ❌ REMOVE BUTTON */
 .remove-doc-btn {
-  background: #ff4d4d;
+  background: linear-gradient(135deg, #ff4d4d, #d90429);
   border: none;
   border-radius: 8px;
   color: white;
   cursor: pointer;
-  padding: 4px 9px;
-  font-size: 16px;
-  transition: all 0.3s;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .remove-doc-btn:hover {
-  background: #ff2b2b;
   transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.5);
 }
 
-/* 📋 Field Section */
+/* 🧩 FIELD SECTION */
 .fields-section {
   margin-top: 10px;
-  border-top: 1px solid #444;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .field-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: #e2e2e2;
+  flex-wrap: wrap;
 }
 
 .field-item input[type="checkbox"] {
@@ -126,22 +139,21 @@
   height: 18px;
   accent-color: #6a80ff;
   cursor: pointer;
-  transition: 0.3s ease;
 }
 
 .field-item span {
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.3px;
 }
 
-/* ✅ OK Button */
+/* ✅ OK BUTTON */
 .ok-btn {
-  margin-top: 12px;
+  margin-top: 10px;
   background: linear-gradient(90deg, #4f46e5, #6a5acd);
   border: none;
   color: #fff;
   border-radius: 10px;
-  padding: 8px 18px;
+  padding: 8px 16px;
   cursor: pointer;
   font-weight: 600;
   align-self: flex-start;
@@ -151,12 +163,16 @@
 .ok-btn:hover {
   background: linear-gradient(90deg, #6a5acd, #4f46e5);
   transform: translateY(-2px);
-  box-shadow: 0 0 10px #6a5acd99;
+  box-shadow: 0 0 12px #6a5acd99;
 }
 
-/* ✍️ Conditions */
+/* ✍️ CONDITIONS */
 .conditions-wrapper {
-  margin-top: 30px;
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .conditions-wrapper h4 {
@@ -168,34 +184,36 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .condition-item textarea {
   flex: 1;
+  min-width: 200px;
   background: #2b2d42;
   border: 1px solid #444;
   border-radius: 10px;
   color: #fff;
-  padding: 10px;
+  padding: 8px;
   resize: vertical;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .remove-btn {
-  background: #ff4d4d;
+  background: linear-gradient(135deg, #ff4d4d, #d90429);
   border: none;
   border-radius: 8px;
   color: white;
   cursor: pointer;
-  padding: 6px 10px;
-  font-size: 16px;
+  padding: 5px 9px;
+  font-size: 15px;
   transition: 0.3s ease;
 }
 
 .remove-btn:hover {
-  background: #ff2b2b;
   transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.6);
 }
 
 .add-condition-btn {
@@ -203,7 +221,7 @@
   background: linear-gradient(90deg, #6366f1, #8b5cf6);
   border: none;
   border-radius: 8px;
-  padding: 8px 15px;
+  padding: 8px 14px;
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -212,12 +230,16 @@
 
 .add-condition-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 10px #8b5cf6aa;
+  box-shadow: 0 0 12px #8b5cf6aa;
 }
 
-/* ⚙️ Protocols Section */
+/* ⚙️ PROTOCOLS SECTION */
 .protocols-wrapper {
-  margin-top: 30px;
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .protocols-wrapper h4 {
@@ -231,15 +253,16 @@
   border: 1px solid #444;
   border-radius: 10px;
   color: #fff;
-  padding: 8px 12px;
-  margin-bottom: 12px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
 }
 
 .protocol-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
 }
 
 .protocol-item input[type="checkbox"] {
@@ -247,26 +270,84 @@
   cursor: pointer;
 }
 
+.protocol-info {
+  flex: 1;
+}
+
 .protocol-info strong {
   color: #d2d6ff;
 }
 
-/* 💾 Save Button */
+/* 💾 SAVE BUTTON */
 .save-btn {
   display: block;
   margin: 30px auto 0;
-  padding: 12px 30px;
+  padding: 10px 25px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   background: linear-gradient(90deg, #4f46e5, #6a5acd);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   transition: all 0.3s ease;
 }
 
 .save-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 15px #6a5acd99;
+  box-shadow: 0 0 18px #6a5acd99;
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .reference-form {
+    padding: 18px;
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .selector-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .document-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .condition-item {
+    flex-direction: column;
+  }
+
+  .ok-btn,
+  .add-condition-btn,
+  .save-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .preview {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .reference-form {
+    padding: 14px;
+    margin: 20px auto;
+  }
+
+  .selector-group input,
+  .selector-group select {
+    font-size: 14px;
+    padding: 7px 10px;
+  }
+
+  .save-btn {
+    padding: 9px 18px;
+    font-size: 14px;
+  }
 }
