@@ -167,7 +167,7 @@ export default function Dashboard() {
                   field.uploads && field.uploads.length > 0 ? (
                     <div key={i} className="file-preview">
                       {field.uploads.map((fileObj, j) => {
-                        const fileUrl = `http://localhost:5050${fileObj.filePath}`;
+                        const fileUrl = `https://docuvault-agmi.onrender.com${fileObj.filePath}`;
                         return fileObj.fileType === "image" ? (
                           <img
                             key={j}

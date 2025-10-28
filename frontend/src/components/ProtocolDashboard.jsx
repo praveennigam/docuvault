@@ -196,7 +196,7 @@ export default function ProtocolDashboard() {
                     <ul>
                       {step.documents.map((file, i) => (
                         <li key={i}>
-                          <a href={`http://localhost:5050/uploads/${file}`} target="_blank" rel="noopener noreferrer">{file}</a>
+                          <a href={`https://docuvault-agmi.onrender.com/uploads/${file}`} target="_blank" rel="noopener noreferrer">{file}</a>
                         </li>
                       ))}
                     </ul>

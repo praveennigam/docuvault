@@ -7,7 +7,7 @@ export default defineConfig({
     proxy: {
       "/api": {
        // target: "https://docuvault-agmi.onrender.com",
-         target: "http://localhost:5050",
+         target: "https://docuvault-agmi.onrender.com",
         changeOrigin: true,
         secure: false,
       },

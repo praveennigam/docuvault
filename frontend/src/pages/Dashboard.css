@@ -231,11 +231,13 @@
   animation: fadeIn 0.3s ease;
 }
 .chat-msg.user {
-  align-self: flex-start;
+
+  align-self: flex-end;
+  
   background: linear-gradient(135deg, #00bbf9, #9b5de5);
 }
 .chat-msg.bot {
-  align-self: flex-end;
+  align-self: flex-start;
   background: linear-gradient(135deg, #06d6a0, #118ab2);
 }
 
