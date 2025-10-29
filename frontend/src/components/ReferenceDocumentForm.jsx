@@ -141,6 +141,7 @@ export default function ReferenceDocumentForm({
       {/* LABEL + DOCUMENT SELECT */}
       {category && (
         <div className="selector-group">
+            <h4>Sop Name:</h4>
           <input
             type="text"
             placeholder="Company & Position"
@@ -221,7 +222,7 @@ export default function ReferenceDocumentForm({
       )}
 
       {/* CONDITIONS */}
-      {selectedDocs.length > 0 && (
+      {category && protocols.length > 0 && (
         <div className="conditions-wrapper">
           <h4>Conditions</h4>
           {conditions.map((c, i) => (

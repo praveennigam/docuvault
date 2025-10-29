@@ -18,6 +18,7 @@
   transition: all 0.4s ease;
   animation: fadeIn 0.8s ease-in-out;
   padding-bottom: 70px;
+  
 }
 
 /* 🎞️ FADE-IN EFFECT */
@@ -141,9 +142,23 @@
   gap: 15px;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
+  overflow-y: auto;
   transition: max-height 0.6s ease, opacity 0.6s ease;
+  scrollbar-width: none; /* ✅ Hide scrollbar (Firefox) */
+  -ms-overflow-style: none; /* ✅ Hide scrollbar (IE/Edge) */
 }
+
+/* ✅ Hide scrollbar for Chrome, Edge, Safari */
+.expanded-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional: when expanded (active) */
+.expanded-content.active {
+  max-height: 400px; /* set your desired height */
+  opacity: 1;
+}
+
 
 .reference-card.expanded .expanded-content {
   opacity: 1;

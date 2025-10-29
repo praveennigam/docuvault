@@ -15,7 +15,30 @@
   color: #433466;
   padding: 40px 20px;
   width: 100vw;
+   scroll-behavior: smooth; /* ✅ smooth scrolling */
+  scrollbar-width: none; /* ✅ Hide scrollbar (Firefox) */
+  -ms-overflow-style: none;
 }
+
+
+
+.reference-dashboard::-webkit-scrollbar {
+  display: none;
+}
+
+/* ✨ Optional scroll fade indicator (looks premium) */
+.reference-dashboard::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  pointer-events: none;
+  z-index: 5;
+} 
+
+
 
 /* 🌈 Animated Gradient Background */
 .gradient-bg {

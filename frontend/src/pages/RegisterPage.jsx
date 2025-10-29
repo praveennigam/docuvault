@@ -192,7 +192,7 @@ export default function RegisterPage({ onBack, onNext }) {
             onChange={(e) => setSelectedRole(e.target.value)}
             required
           >
-            <option value="">-- Select Role --</option>
+            <option value="">-- Select Sop --</option>
             {roles.map((role) => (
               <option key={role._id} value={role._id}>
                 {role.label}

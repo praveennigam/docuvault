@@ -12,8 +12,16 @@
   transition: all 0.3s ease;
   overflow-y: auto;
   min-height: 50vh;
+  max-height: 80vh; /* ✅ prevent page overflow */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  scrollbar-width: none; /* ✅ Hide scrollbar (Firefox) */
+  -ms-overflow-style: none; /* ✅ Hide scrollbar (IE/Edge) */
+}
+
+/* ✅ Hide scrollbar for Chrome, Edge, Safari */
+.reference-form::-webkit-scrollbar {
+  display: none;
 }
 
 /* 🔘 SELECTOR GROUP */
@@ -290,6 +298,11 @@
   cursor: pointer;
   font-size: 15px;
   transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+
 }
 
 .save-btn:hover {
