@@ -3,16 +3,16 @@
   background: linear-gradient(145deg, #1e1f29, #2b2d42, #3a0ca3);
   color: #f8f9fa;
   border-radius: 18px;
-  padding: 20px;
+  padding: 24px;
   width: 90%;
   max-width: 900px;
-  margin: 20px auto;
+  margin: 30px auto;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
   overflow-y: auto;
-  max-height: 85vh;
-  backdrop-filter: blur(12px);
+  min-height: 50vh;
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -39,9 +39,10 @@
   border: 1px solid #444;
   border-radius: 10px;
   color: #fff;
-  padding: 9px 14px;
+  padding: 10px 14px;
   font-size: 15px;
   transition: all 0.3s ease;
+  outline: none;
 }
 
 .selector-group select:hover,
@@ -62,10 +63,10 @@
 .document-card {
   background: linear-gradient(145deg, #2b2d42, #1f2135);
   border-radius: 14px;
-  padding: 12px 15px;
+  padding: 14px 18px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease;
   border: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .document-card.open {
@@ -87,7 +88,6 @@
   margin: 0;
   color: #d2d6ff;
   font-weight: 600;
-  flex-shrink: 0;
 }
 
 .preview {
@@ -106,7 +106,7 @@
   border-radius: 8px;
   color: white;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 6px 10px;
   font-size: 14px;
   transition: all 0.3s ease;
 }
@@ -143,12 +143,11 @@
 
 .field-item span {
   font-size: 14px;
-  letter-spacing: 0.3px;
 }
 
 /* ✅ OK BUTTON */
 .ok-btn {
-  margin-top: 10px;
+  margin-top: 12px;
   background: linear-gradient(90deg, #4f46e5, #6a5acd);
   border: none;
   color: #fff;
@@ -190,7 +189,7 @@
 
 .condition-item textarea {
   flex: 1;
-  min-width: 200px;
+  min-width: 220px;
   background: #2b2d42;
   border: 1px solid #444;
   border-radius: 10px;

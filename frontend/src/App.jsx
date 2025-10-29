@@ -51,7 +51,7 @@ function App() {
           <Route path="/protocols" element={<ProtocolDashboard />} />
           <Route path="/dashboard" element={<UserAccess />} />
           <Route path="/user-dashboard" element={<Dashboard />} />
-           <Route path="/user-dashboard" element={<UserDashboard />} />
+          
            {/* ✅ Added route */}
         </Routes>
       </div>

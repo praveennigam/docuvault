@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [saving, setSaving] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
+  const [demoFields, setDemoFields] = useState({}); // Track demo placeholders
 
   // 🟢 Fetch user data
   useEffect(() => {
@@ -21,7 +22,10 @@ export default function Dashboard() {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
-        if (res.ok) setUserData(data);
+        if (res.ok) {
+          setUserData(data);
+          setDemoFields({});
+        }
       } catch {
         alert("❌ Failed to fetch user data");
       } finally {
@@ -37,14 +41,19 @@ export default function Dashboard() {
     navigate("/");
   };
 
-  // 🟢 File Upload for Aadhaar/PAN/etc.
-  const handleFileUpload = async (e, type) => {
+  // 🟢 File Upload / Replace
+  const handleFileUpload = async (e, type, isReplace = false) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    // Temporary placeholder
+    setDemoFields((prev) => ({ ...prev, [type]: true }));
 
     try {
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("userId", storedUser.id);
+      formData.append("replace", isReplace ? "true" : "false");
 
       const res = await fetch(`/api/users/upload/${type}/${storedUser.id}`, {
         method: "POST",
@@ -55,7 +64,7 @@ export default function Dashboard() {
       const data = await res.json();
 
       if (res.ok) {
-        alert(`✅ ${type} uploaded successfully!`);
+        alert(`✅ ${type} ${isReplace ? "replaced" : "uploaded"} successfully!`);
         setUserData((prev) => ({
           ...prev,
           requiredFields: data.updatedFields,
@@ -64,8 +73,14 @@ export default function Dashboard() {
         alert(`❌ ${data.message || "Upload failed"}`);
       }
     } catch (err) {
-      alert("❌ File upload failed");
       console.error(err);
+      alert("❌ File upload failed");
+    } finally {
+      setDemoFields((prev) => {
+        const copy = { ...prev };
+        delete copy[type];
+        return copy;
+      });
     }
   };
 
@@ -85,6 +100,7 @@ export default function Dashboard() {
       if (res.ok) {
         alert("✅ Profile updated successfully!");
         setUserData(data);
+        setDemoFields({});
       } else {
         alert(`❌ ${data.message || "Update failed"}`);
       }
@@ -120,7 +136,9 @@ export default function Dashboard() {
     Math.min(
       100,
       Math.round(
-        ((completedItems + (protocolCount > 0 ? 1 : 0) + (conditionCount > 0 ? 1 : 0)) /
+        ((completedItems +
+          (protocolCount > 0 ? 1 : 0) +
+          (conditionCount > 0 ? 1 : 0)) /
           totalItems) *
           100
       )
@@ -141,70 +159,100 @@ export default function Dashboard() {
         <div className="left-panel-unique scrollable">
           <h2>👋 Welcome, {userData?.email}</h2>
           <p>
-            Applied Sop: <strong>{userData?.role?.label || "User"}</strong> | Company/Position:{" "}
-            <strong>{userData?.role?.category}</strong>
+            Applied Sop: <strong>{userData?.role?.label || "User"}</strong> |
+            Company/Position: <strong>{userData?.role?.category}</strong>
           </p>
 
           {/* 🧾 Fields */}
           <div className="fields-list-unique">
-            {Object.keys(groupedFields).map((type) => (
-              <div key={type} className="type-section">
-                <h3 className="type-title">
-                  📑 {type}
-                  <label className="upload-btn-small">
-                    📤 Upload {type}
-                    <input
-                      type="file"
-                      accept=".pdf,image/*"
-                      onChange={(e) => handleFileUpload(e, type)}
-                      hidden
-                    />
-                  </label>
-                </h3>
+            {Object.keys(groupedFields).map((type) => {
+              const allUploads = groupedFields[type]
+                .flatMap((field) => field.uploads || [])
+                .filter(Boolean);
 
-                {/* 🆕 Show uploaded images from DB */}
-                {groupedFields[type]?.map((field, i) =>
-                  field.uploads && field.uploads.length > 0 ? (
-                    <div key={i} className="file-preview">
-                      {field.uploads.map((fileObj, j) => {
-                        const fileUrl = `https://docuvault-agmi.onrender.com${fileObj.filePath}`;
-                        return fileObj.fileType === "image" ? (
-                          <img
-                            key={j}
-                            src={fileUrl}
-                            alt={fileObj.fileName}
-                            className="image-preview"
-                          />
-                        ) : (
-                          <iframe
-                            key={j}
-                            src={fileUrl}
-                            title={fileObj.fileName}
-                            className="pdf-preview"
-                          />
+              const uniqueUploads = [
+                ...new Map(
+                  allUploads.map((fileObj) => [
+                    `http://localhost:5050${fileObj.filePath}`,
+                    fileObj,
+                  ])
+                ).values(),
+              ];
+
+              const hasUploaded = uniqueUploads.length > 0;
+
+              return (
+                <div key={type} className="type-section">
+                  <h3 className="type-title">📑 {type}</h3>
+
+                  {/* 🟢 Upload / Replace Buttons */}
+                  {!hasUploaded ? (
+                    <label className="upload-btn-small">
+                      📤 Upload {type}
+                      <input
+                        type="file"
+                        accept=".pdf,image/*"
+                        hidden
+                        onChange={(e) => handleFileUpload(e, type, false)}
+                      />
+                    </label>
+                  ) : (
+                    <div className="file-preview">
+                      {uniqueUploads.map((fileObj, j) => {
+                        const fileUrl = `http://localhost:5050${fileObj.filePath}`;
+                        return (
+                          <div key={j} className="file-box">
+                            <button
+                              className="view-btn"
+                              title={`View ${fileObj.fileName}`}
+                              onClick={() => window.open(fileUrl, "_blank")}
+                            >
+                              View
+                            </button>
+                            <label className="replace-btn">
+                              Replace
+                              <input
+                                type="file"
+                                accept=".pdf,image/*"
+                                hidden
+                                onChange={(e) => handleFileUpload(e, type, true)}
+                              />
+                            </label>
+                          </div>
                         );
                       })}
                     </div>
-                  ) : null
-                )}
+                  )}
 
-                {/* Read-only Fields */}
-                {groupedFields[type].map((field, idx) => (
-                  <div className="input-group-unique" key={`${field.key}_${idx}`}>
-                    <label>{field.label}</label>
-                    <input
-                      type="text"
-                      value={field.value || ""}
-                      readOnly
-                      placeholder={` ${field.label}`}
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
+                  {/* 🔹 Fields display */}
+                  {groupedFields[type].map((field, idx) => (
+                    <div
+                      className="input-group-unique"
+                      key={`${field.key}_${idx}`}
+                    >
+                      <label>{field.label}</label>
+                      <input
+                        type="text"
+                        readOnly
+                        value={
+                          demoFields[type]
+                            ? `@demo_${field.key}`
+                            : field.value || ""
+                        }
+                        placeholder={
+                          demoFields[type]
+                            ? `@demo_${field.key}`
+                            : ` ${field.label}`
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
           </div>
 
-          {/* 🧩 Protocols */}
+           {/* 🧩 Protocols */}
           {userData?.protocols?.length > 0 && (
             <div className="extra-section">
               <h3>🧩 Protocols</h3>
@@ -242,7 +290,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* 💬 Right Chat Panel */}
+        {/* 💬 Chat Section */}
         <div className="right-panel-unique">
           <div className="chat-header-unique">💬 Smart Assistant</div>
           <div className="chat-body-unique">

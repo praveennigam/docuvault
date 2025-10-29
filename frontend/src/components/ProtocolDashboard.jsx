@@ -7,13 +7,11 @@ export default function ProtocolDashboard() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const [existingFiles, setExistingFiles] = useState([]); // ✅ new: existing files
+  const [existingFiles, setExistingFiles] = useState([]); // ✅ existing files
   const [editingId, setEditingId] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
-  
 
   const fetchProtocols = async () => {
     try {
@@ -63,16 +61,15 @@ export default function ProtocolDashboard() {
         // Ensure we have an array of filenames
         let uploadedFiles = [];
         if (Array.isArray(uploadRes.data)) {
-          uploadedFiles = uploadRes.data.map(f => f.filename);
+          uploadedFiles = uploadRes.data.map((f) => f.filename);
         } else if (uploadRes.data.filename) {
           uploadedFiles = [uploadRes.data.filename];
         } else if (uploadRes.data.files) {
-          uploadedFiles = uploadRes.data.files.map(f => f.filename);
+          uploadedFiles = uploadRes.data.files.map((f) => f.filename);
         }
 
         setExistingFiles([...existingFiles, ...uploadedFiles]);
       }
-
 
       resetForm();
       fetchProtocols();
@@ -83,16 +80,22 @@ export default function ProtocolDashboard() {
   };
 
   const handleEdit = (p) => {
-  setEditingId(p._id);
-  setName(p.name);
-  setDescription(p.description);
-  setSelectedFiles([]);
-  setExistingFiles(p.allDocuments || []);
+    setEditingId(p._id);
+    setName(p.name);
+    setDescription(p.description);
+    setSelectedFiles([]);
+    setExistingFiles(p.allDocuments || []);
 
-  // Scroll to top of the form when editing
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
+    // ✅ Smoothly scroll to the top or form
+    const formElement = document.querySelector(".protocol-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      formElement.classList.add("highlight-form");
+      setTimeout(() => formElement.classList.remove("highlight-form"), 2000);
+    } else {
+      window.scrollTo({ top:0, behavior: "smooth" });
+    }
+  };
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;
@@ -131,12 +134,18 @@ export default function ProtocolDashboard() {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        {/* ✅ Show existing files first */}
+        {/* ✅ Show existing files */}
         {existingFiles.length > 0 && (
           <ul>
             {existingFiles.map((file, i) => (
               <li key={i}>
-                <a href={`/uploads/${file}`} target="_blank" rel="noopener noreferrer">{file}</a>
+                <a
+                  href={`/uploads/${file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {file}
+                </a>
               </li>
             ))}
           </ul>
@@ -162,7 +171,9 @@ export default function ProtocolDashboard() {
       {currentProtocols.map((p) => (
         <div key={p._id} className="protocol-card">
           <h4>{p.name}</h4>
-          <p><strong>Description:</strong> {p.description}</p>
+          <p>
+            <strong>Description:</strong> {p.description}
+          </p>
 
           {p.allDocuments?.length > 0 && (
             <div>
@@ -170,7 +181,13 @@ export default function ProtocolDashboard() {
               <ul>
                 {p.allDocuments.map((file, i) => (
                   <li key={i}>
-                    <a href={`/uploads/${file}`} target="_blank" rel="noopener noreferrer">{file}</a>
+                    <a
+                      href={`/uploads/${file}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {file}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -179,15 +196,16 @@ export default function ProtocolDashboard() {
 
           {p.steps?.length > 0 && (
             <div>
-              
               {p.steps.map((step, idx) => (
                 <div key={idx} style={{ marginBottom: "10px" }}>
-                  
                   {step.description?.length > 0 && (
                     <ul>
                       {step.description.map((d, i) => (
                         <li key={i}>
-                          {d.text} <span style={{ fontStyle: "italic", color: "#555" }}>({d.addedBy})</span>
+                          {d.text}{" "}
+                          <span style={{ fontStyle: "italic", color: "#555" }}>
+                            ({d.addedBy})
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -196,7 +214,13 @@ export default function ProtocolDashboard() {
                     <ul>
                       {step.documents.map((file, i) => (
                         <li key={i}>
-                          <a href={`https://docuvault-agmi.onrender.com/uploads/${file}`} target="_blank" rel="noopener noreferrer">{file}</a>
+                          <a
+                            href={`http://localhost:5050/uploads/${file}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {file}
+                          </a>
                         </li>
                       ))}
                     </ul>

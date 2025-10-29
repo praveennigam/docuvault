@@ -52,22 +52,33 @@ router.post("/upload/:type/:userId", upload.single("file"), async (req, res) => 
     const userFolder = path.join("uploads", userId);
     fs.mkdirSync(userFolder, { recursive: true });
 
-    // ✅ Move uploaded file into the user folder
+    // ✅ Move uploaded file into user folder
     const newPath = path.join(userFolder, file.filename);
     fs.renameSync(file.path, newPath);
 
-    // ✅ File URL (to serve in frontend)
+    // ✅ File info
     const fileUrl = `/uploads/${userId}/${file.filename}`;
     const fileType = file.mimetype.includes("pdf") ? "pdf" : "image";
 
-    // ✅ Update user in DB
+    // ✅ Find user
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // ✅ Update the correct requiredField by `type`
+    // ✅ Update the correct requiredField by type
     user.requiredFields = user.requiredFields.map((f) => {
       if (f.type === type) {
-        // Push new upload entry in `uploads` array
+        // 🧹 Remove old uploaded file (only one allowed per type)
+        if (f.uploads && f.uploads.length > 0) {
+          f.uploads.forEach((oldFile) => {
+            const oldFilePath = path.join("uploads", userId, path.basename(oldFile.filePath));
+            if (fs.existsSync(oldFilePath)) {
+              fs.unlinkSync(oldFilePath); // delete old file from storage
+            }
+          });
+          f.uploads = []; // clear old uploads from DB
+        }
+
+        // ✅ Add new upload
         f.uploads.push({
           fileName: file.filename,
           fileType,
@@ -81,7 +92,7 @@ router.post("/upload/:type/:userId", upload.single("file"), async (req, res) => 
     await user.save();
 
     res.json({
-      message: `✅ ${type} uploaded successfully!`,
+      message: `✅ ${type} uploaded successfully (old file replaced)!`,
       fileUrl,
       updatedFields: user.requiredFields,
     });
